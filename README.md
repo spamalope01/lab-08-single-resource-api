@@ -26,7 +26,6 @@
 * Create a Object Constructor that creates a _simple resource_ with at least 3 properties
  * An `id` property that is set to a unique **node-uuid** id is required
  * Also include two other properties of your choice (like name, creationDate, etc.) 
- * 
 * Create a body parser that uses Promises to parse the json in the body of `POST` and `PUT` requests
 * Create a url parser that returns a promise and uses nodes `url` and `querystring` modules parse the request url
 * Create a Router Constructor that manages requests to `GET`, `POST`, `PUT`, and `DELETE` requests
