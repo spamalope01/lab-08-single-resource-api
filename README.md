@@ -39,7 +39,8 @@
 * `GET` request 
  * pass an `?id=<uuid>` in the query string to retrieve a specific resource as json
 * `DELETE` request
- * pass data as stringifed json that contains `{id:<uuid>}` in the body of a post request to delete a resource
+ * pass an `?id=<uuid>` in the query string to delete a specific resource
+ * should return 204 status with no content in the body
 
 ## Tests 
 * your tests should start your server when they begin and stop your server when they finish
