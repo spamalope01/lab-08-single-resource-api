@@ -1,8 +1,6 @@
 ![cf](https://i.imgur.com/7v5ASc8.png) lab-07-single-resource-api (ROUTER)
 ======
 
-[![](https://img.shields.io/badge/Issues%3F-Ask%20for%20Help!-55cbe0.svg)](https://github.com/codefellows/seattle-javascript-401n1/issues/new)
-[![Build Status](https://travis-ci.org/codefellows-seattle-javascript-401n1/lab-07-08-single-resource-api.svg?branch=master)](https://travis-ci.org/codefellows-seattle-javascript-401n1/lab-07-08-single-resource-api)
 
 # To Submit this Assignment
   * fork this repository
@@ -16,28 +14,24 @@
 * create a package.json that lists all dependencies and developer dependencies
 * include an .eslintrc
 * include a .gitignore
+* include a readme with project description
 * create a gulpfile
- * have a lint task for running eslint
- * have a test task for running mocha
- * have a nodemon task that restarts your server any time a change has been bade to your **.js** files
- * have a default task for running the lint and mocha tasks
 
 # Directions
 * Create these directories to organize your code: 
  * lib
  * model
- * route
  * test
 * Create a HTTP Server using the http module
 * Create a Object Constructor that creates a _simple resource_ with at least 3 properties
  * An `id` property that is set to a unique **node-uuid** id is required
  * Also include two other properties of your choice (like name, creationDate, etc.) 
-* Create a body parser that uses Promises to parse the json in the body of `POST`, `PUT`, or `DELETE` requests
+ * 
+* Create a body parser that uses Promises to parse the json in the body of `POST` and `PUT` requests
 * Create a url parser that returns a promise and uses nodes `url` and `querystring` modules parse the request url
 * Create a Router Constructor that manages requests to `GET`, `POST`, `PUT`, and `DELETE` requests
-* Create a route for doing **CRUD** operations on your _simple resource_
- * when instances of a resource are created they should be stored on an object using the `uuid` as the key
- * the value associated with the key should be the instance of the resource
+* Create a route for doing `CREATE`, `READ`, and `DELETE` operations on your _simple resource_
+* Create a storage module that will store resources by their type and id
 
 ## Server Endpoints
 ### `/api/simple-resource-name`
@@ -59,5 +53,5 @@
  * `POST` - test 200, response body like  `{<data>}` for a post request with a valid body
 
 ## Bonus
-* **2pts** a `GET` request to `/api/simple-resource-name/all` should retrun an array of all of the ids for that resource
+* **2pts** a `GET` request to `/api/simple-resource-name` with no **?id=** should retrun an array of all of the ids for that resource
 
