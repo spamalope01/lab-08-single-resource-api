@@ -1,0 +1,20 @@
+{
+  "name": "lab-jonathan",
+  "version": "1.0.0",
+  "description": "lab08",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "JD",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "node-uuid": "^1.4.7"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
