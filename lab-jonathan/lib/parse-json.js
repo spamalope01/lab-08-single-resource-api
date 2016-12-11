@@ -1,7 +1,6 @@
 module.exports = function(req){
   return new Promise((resolve, reject) => {
     if(req.method === 'POST' || req.method === 'PUT'){
-      console.log('parsing body now');
       let body = '';
       req.on('data', data => {
         body += data.toString();

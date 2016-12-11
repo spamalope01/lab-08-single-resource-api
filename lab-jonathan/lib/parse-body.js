@@ -1,6 +1,3 @@
-
-'use strict';
-
 module.exports = function(req, callback) {
   req.body = '';
 

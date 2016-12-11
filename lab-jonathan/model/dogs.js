@@ -7,3 +7,5 @@ function Dog(name, toy) {
   this.toy = toy,
   this.id = uuid.v4();
 }
+
+module.exports = Dog;
