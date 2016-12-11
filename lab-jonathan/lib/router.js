@@ -1,29 +1,31 @@
-//way to associate callbacks with that combination VERB/route.
-module.exports = Router;
+let parseURL = require('./parse-url.js');
+let parseJSON = require('./parse-json.js');
+
+
 function Router() {
   this.routes = {
     GET: {},
     POST: {},
     PUT: {},
-    DELETE: {}
-  }
+    DELETE: {},
+  };
 }
 
 Router.prototype.get = function(endpoint, callback) {
-  this.routes.GET[endpoint] = callback
-}
+  this.routes.GET[endpoint] = callback;
+};
 
-Router.prototype.get = function(endpoint, callback) {
-  this.routes.POST[endpoint] = callback
-}
+Router.prototype.post = function(endpoint, callback) {
+  this.routes.POST[endpoint] = callback;
+};
 
-Router.prototype.get = function(endpoint, callback) {
-  this.routes.PUT[endpoint] = callback
-}
+Router.prototype.put = function(endpoint, callback) {
+  this.routes.PUT[endpoint] = callback;
+};
 
-Router.prototype.get = function(endpoint, callback) {
-  this.routes.DELETE[endpoint] = callback
-}
+Router.prototype.delete = function(endpoint, callback) {
+  this.routes.DELETE[endpoint] = callback;
+};
 
 Router.prototype.route = function() {
   return function (req, res){
@@ -46,7 +48,6 @@ Router.prototype.route = function() {
 
     })
     .catch( err => {
-      // if parse body fails log error to server and respond 400 to user
       console.error(err);
       res.writeHead(400, {
         'Content-Type': 'text/plain',
@@ -56,3 +57,5 @@ Router.prototype.route = function() {
     });
   };
 };
+
+module.exports = Router;

@@ -5,5 +5,5 @@ let uuid = require('node-uuid');
 function Dog(name, toy) {
   this.name = name,
   this.toy = toy,
-  this.id = id.v4();
+  this.id = uuid.v4();
 }
