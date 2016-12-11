@@ -22,7 +22,7 @@ module.exports = function(router) {
   router.post('/api/dogs', function(req, res) {
     try{
       let pup = new Dog(req.body.name, req.body.toy);
-      storage.createItem('dog', pup);
+      storage.createItem(pup);
       res.writeHead(200, {
         'Content-Type': 'application/json',
       });
@@ -38,18 +38,18 @@ module.exports = function(router) {
       res.end();
     }
   });
-  //
-  // router.delete('/api/dogs', function(req, res){
-  //   if(req.url.query.id) {
-  //     storage.fetchItem('dog', req.url.query.id)
-  //     .then(dog => {
-  //       response.sendJSON(res, 200, dog);
-  //     })
-  //     .catch(err => {
-  //       response.sendText(res, 404, 'Not Found');
-  //     });
-  //     return;
-  //   }
-  //   response.sendText(res, 400, 'Bad Request, honkey');
-  // })
+
+  router.delete('/api/dogs', function(req, res){
+    if(req.url.query.id) {
+      storage.deleteItem(req.url.query.id)
+      .then(() => {
+        response.sendText(res, 200, 'deleted the file');
+      })
+      .catch(err => {
+        response.sendText(res, 404, 'DELETE Not Found');
+      });
+      return;
+    }
+    response.sendText(res, 400, 'Bad Request, honkey');
+  });
 };
