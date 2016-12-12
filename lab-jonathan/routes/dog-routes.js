@@ -1,28 +1,16 @@
-let storage = require('../lib/storage');
-
-// module.exports = (router, storage) => {
-//   router.get('/dogs', function(req, res) {
-//     storage.fetchItem('dogs')
-//       .then(dogs => {
-//         res.write(dogs);
-//         res.end();
-//       });
-//   });
-//   router.post('/dogs', function(req, res) {
-//
-//   });
-// };
-
-
+let storage = require('../lib/storage.js');
 let response = require('../lib/response.js');
 let Dog = require('../model/dogs.js');
 
+
 module.exports = function(router) {
-  router.get('/api/dog', function(req, res) {
+  router.get('/api/dogs', function(req, res) {
     if(req.url.query.id) {
-      storage.fetchItem('dog', req.url.query.id)
+      storage.fetchItem(req.url.query.id)
       .then(dog => {
+        console.log('then dog', dog);
         response.sendJSON(res, 200, dog);
+        console.log(res);
       })
       .catch(err => {
         response.sendText(res, 404, 'Not Found');
@@ -32,14 +20,14 @@ module.exports = function(router) {
     response.sendText(res, 400, 'Bad Request');
   });
 
-  router.post('/api/note', function(req, res) {
+  router.post('/api/dogs', function(req, res) {
     try{
-      let dog = new Dog(req.body.name, req.body.content);
-      storage.createItem('dog', dog);
+      let pup = new Dog(req.body.name, req.body.toy);
+      storage.createItem(pup);
       res.writeHead(200, {
         'Content-Type': 'application/json',
       });
-      res.write(JSON.stringify(dog));
+      res.write(JSON.stringify(pup));
       res.end();
     }
     catch(err) {
@@ -50,5 +38,19 @@ module.exports = function(router) {
       res.write('Bad Request');
       res.end();
     }
+  });
+
+  router.delete('/api/dogs', function(req, res){
+    if(req.url.query.id) {
+      storage.deleteItem(req.url.query.id)
+      .then(() => {
+        response.sendText(res, 200, 'deleted the file');
+      })
+      .catch(err => {
+        response.sendText(res, 404, 'Not Found');
+      });
+      return;
+    }
+    response.sendText(res, 400, 'Bad Request');
   });
 };

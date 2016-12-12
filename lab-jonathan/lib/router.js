@@ -1,5 +1,5 @@
-let parseURL = require('./parse-url.js');
-let parseJSON = require('./parse-json.js');
+let parseUrl = require('../lib/parse-url.js');
+let parseJSON = require('../lib/parse-json.js');
 
 
 function Router() {
@@ -28,13 +28,13 @@ Router.prototype.delete = function(endpoint, callback) {
 };
 
 Router.prototype.route = function() {
-  return function (req, res){
+  return (req, res) => {
     Promise.all([
-      parseURL(req),
+      parseUrl(req),
       parseJSON(req),
     ])
     .then(() => {
-      if(typeof this.routes[req.method][req.url.pathname] === 'function'){
+      if(this.routes[req.method][req.url.pathname]){
         this.routes[req.method][req.url.pathname](req, res);
         return;
       }
@@ -52,7 +52,7 @@ Router.prototype.route = function() {
       res.writeHead(400, {
         'Content-Type': 'text/plain',
       });
-      res.write('bad request');
+      res.write('Bad Request');
       res.end();
     });
   };

@@ -1,5 +1,5 @@
-let parseURL = require('url');
-let parseQuery = require('querystring');
+let parseUrl = require('url').parse;
+let parseQuery = require('querystring').parse;
 
 module.exports = function(req){
   req.url = parseUrl(req.url);
