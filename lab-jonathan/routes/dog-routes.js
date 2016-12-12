@@ -10,6 +10,7 @@ module.exports = function(router) {
       .then(dog => {
         console.log('then dog', dog);
         response.sendJSON(res, 200, dog);
+        console.log(res);
       })
       .catch(err => {
         response.sendText(res, 404, 'Not Found');
@@ -34,7 +35,7 @@ module.exports = function(router) {
       res.writeHead(400, {
         'Content-Type': 'text/plain',
       });
-      res.write('Bad Request, motherfucker');
+      res.write('Bad Request');
       res.end();
     }
   });
@@ -46,10 +47,10 @@ module.exports = function(router) {
         response.sendText(res, 200, 'deleted the file');
       })
       .catch(err => {
-        response.sendText(res, 404, 'DELETE Not Found');
+        response.sendText(res, 404, 'Not Found');
       });
       return;
     }
-    response.sendText(res, 400, 'Bad Request, honkey');
+    response.sendText(res, 400, 'Bad Request');
   });
 };

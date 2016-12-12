@@ -52,7 +52,7 @@ Router.prototype.route = function() {
       res.writeHead(400, {
         'Content-Type': 'text/plain',
       });
-      res.write('you gave me a bad request, bitch');
+      res.write('Bad Request');
       res.end();
     });
   };
