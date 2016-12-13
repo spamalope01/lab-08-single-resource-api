@@ -3,6 +3,10 @@ let bluebird = require('bluebird');
 let fs = bluebird.promisifyAll(require('fs'), { suffix: 'Prom'});
 let del = require('del');
 
+// fs.watchProm('../data', {persistent: true}, (eventType, filename) => {
+//   console.log('Event: ' + eventType);
+//   console.log(filename + '\n');
+// });
 
 storage.createItem = function(item){
   let json = JSON.stringify(item);
@@ -35,5 +39,3 @@ storage.deleteItem = function(id){
 };
 
 module.exports = storage;
-
-//update for lab09 so i can make a PR.  
